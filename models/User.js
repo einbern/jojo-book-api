@@ -44,6 +44,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       max: 50,
     },
+    university: {
+      type: String,
+      max: 50,
+    },
     city: {
       type: String,
       max: 50,

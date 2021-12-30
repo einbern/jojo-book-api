@@ -19,6 +19,7 @@ router.put("/:id", async (req, res) => {
             });
             res.status(200).json("Account has been updated")
         } catch (err) {
+            console.log(err)
             return res.status(500).json(err)
         }
     } else {
@@ -71,6 +72,25 @@ router.get("/friends/:userId", async (req, res) => {
             friendList.push({ _id, username, profilePicture })
         })
         res.status(200).json(friendList);
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+//get not friends
+router.get("/notfriends/:userId", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId);
+        // console.log(user)
+        const people = await User.find({_id: {$nin: [...user.followings,user._id]}});
+        console.log(people)
+
+        let peopleList = [];
+        people.map(person => {
+            const { _id, username, profilePicture } = person;
+            peopleList.push({ _id, username, profilePicture })
+        })
+        res.status(200).json(peopleList);
     } catch (err) {
         res.status(500).json(err)
     }
