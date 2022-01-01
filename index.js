@@ -13,6 +13,9 @@ const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const uploadRoute = require("./routes/upload");
 const { json } = require("express/lib/response");
+const cors = require('cors')
+
+app.use(cors());
 
 dotenv.config();
 
