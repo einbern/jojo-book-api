@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 8900
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
@@ -51,6 +52,6 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/upload", uploadRoute);
 
-app.listen(8900, () => {
-    console.log('Backend server is running')
+app.listen(PORT, () => {
+    console.log(`Backend Serer is running. ${PORT}`)
 })
