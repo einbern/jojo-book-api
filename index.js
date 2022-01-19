@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 8900
+const PORT = process.env.PORT || 8800
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
@@ -12,6 +12,8 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const uploadRoute = require("./routes/upload");
+const conversationRoute = require("./routes/conversations");
+const messageRoute = require("./routes/messages");
 const { json } = require("express/lib/response");
 const cors = require('cors')
 
@@ -52,3 +54,5 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/upload", uploadRoute);
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messageRoute);
